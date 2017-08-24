@@ -6,4 +6,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "root is home#index" do
+    get root_path
+    assert_response :success
+  end
+
 end
