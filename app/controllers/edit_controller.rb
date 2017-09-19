@@ -1,8 +1,7 @@
 class EditController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    logger.debug current_user.inspect
-    logger.debug user_session.inspect
+  def show
+    @tweets = Tweet.where(uid_id: current_user.uid)
   end
 end

@@ -1,0 +1,9 @@
+.container
+  検索キーワードを登録
+  = form_tag controller: :search, action: :update
+    = text_field_tag :keyword
+    = submit_tag "登録"
+br
+- @tweets.each do |tweet|
+  = tweet.text
+  br

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'edit/index'
-
   root 'home#index'
-  get 'home/index'
+  get 'edit', to: 'edit#show'
+  post 'search', to: 'search#update'
+
 
   devise_for :users, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks"}
 

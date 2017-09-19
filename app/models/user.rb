@@ -4,7 +4,9 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     find_or_create_by!(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
-      user.uid = auth["uid"]
+      user.uid      = auth["uid"]
+      user.token    = auth["credentials"]["token"]
+      user.secret   = auth["credentials"]["secret"] 
     end
   end
 
