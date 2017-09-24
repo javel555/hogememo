@@ -1,9 +1,23 @@
 .container
-  検索キーワードを登録
-  = form_tag controller: :search, action: :update
-    = text_field_tag :keyword
-    = submit_tag "登録"
-br
-- @tweets.each do |tweet|
-  = tweet.text
+  .menu
+    検索キーワードを登録
+    = form_tag controller: :search, action: :update
+      = text_field_tag :keyword
+      = submit_tag "登録"
+    現在の検索キーワード
+    br
+    = @keyword
   br
+  hr
+  br
+  .tweets
+    - @tweets.each do |tweet|
+      .line
+        .tweet
+          = tweet.text
+        .tags
+          = tweet.tag_list.to_s
+        .tag_adder
+          = form_tag "edit/tag/#{tweet.id}"
+            = text_field_tag :append_tag
+            = submit_tag "タグを付ける" 
