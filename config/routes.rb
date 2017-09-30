@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'view/:id', to: 'home#show'
 
 
   get 'edit', to: 'edit#show'

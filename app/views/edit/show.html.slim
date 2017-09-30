@@ -10,14 +10,22 @@
   br
   hr
   br
-  .tweets
-    - @tweets.each do |tweet|
-      .line
-        .tweet
-          = tweet.text
-        .tags
-          = tweet.tag_list.to_s
-        .tag_adder
-          = form_tag "edit/tag/#{tweet.id}"
-            = text_field_tag :append_tag
-            = submit_tag "タグを付ける" 
+  .row
+    .col-md-10
+      .tweets
+        - @tweets.each do |tweet|
+          .line
+            .tweet
+              = tweet.text
+            .tags
+              = tweet.tag_list.to_s
+            .tag_adder
+              = form_tag "edit/tag/#{tweet.id}"
+                = text_field_tag :append_tag
+                = submit_tag "タグを付ける" 
+                = submit_tag "タグを消す"
+    .col-md-2
+      .command
+        = form_tag "/edit/", method: 'GET'
+          = text_field_tag :tag, params[:tag], placeholder: 'タグ検索'
+          = submit_tag "検索"
